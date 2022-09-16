@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  min_messages: WARNING
+
+development: &development
+  <<: *default
+  database: github_events_counter_development
+
+test:
+  <<: *default
+  password: password
+  database: github_events_counter_test
+
+production:
+  <<: *default
