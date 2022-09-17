@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  postgres-hll:
+    image: postgres-hll:14.5
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5434:5434'
+    command: -p 5434
+    volumes:
+      - postgres-hll:/var/lib/postgresql/data
+volumes:
+  postgres-hll:
+    driver: local

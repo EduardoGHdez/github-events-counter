@@ -1,7 +1,9 @@
 default: &default
   adapter: postgresql
   host: localhost
+  port: 5434
   min_messages: WARNING
+  password: postgres
 
 development: &development
   <<: *default
@@ -9,7 +11,6 @@ development: &development
 
 test:
   <<: *default
-  password: password
   database: github_events_counter_test
 
 production:
