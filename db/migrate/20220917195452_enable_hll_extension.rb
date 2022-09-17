@@ -1,0 +1,5 @@
+class EnableHllExtension < ActiveRecord::Migration[7.0]
+  def change
+    enable_extension 'hll'
+  end
+end
