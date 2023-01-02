@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_17_200709) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_21_201739) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hll"
   enable_extension "plpgsql"
+
+  create_table "github_event_hourly_rollups", force: :cascade do |t|
+    t.datetime "date", precision: nil
+    t.string "event_type"
+    t.hll "distinct_user_id_count"
+  end
 
   create_table "github_events", id: false, force: :cascade do |t|
     t.bigint "event_id", null: false
