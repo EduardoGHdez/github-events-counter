@@ -15,4 +15,14 @@ ActiveSupport.on_load :active_record do
   # Register oid type do be detected on schema-dumper.
   # See example: https://github.com/rails/rails/pull/17443
   ActiveRecord::ConnectionAdapters::PostgreSQLAdapter.prepend Hll::AdapterExtension
+
+  Arel::Attributes::Attribute.prepend Hll::Arel::Predications
+  Arel::Nodes::Function.prepend Hll::Arel::Predications
+  Arel::Nodes::Grouping.prepend Hll::Arel::Predications
+  Arel::Nodes::Unary.prepend Hll::Arel::Predications
+  Arel::Nodes::Binary.prepend Hll::Arel::Predications
+  Arel::Nodes::SqlLiteral.prepend Hll::Arel::Predications
+
+  ActiveRecord::Calculations.prepend Hll::ActiveRecord::Calculations
+  ActiveRecord::Querying.prepend Hll::ActiveRecord::Querying
 end
